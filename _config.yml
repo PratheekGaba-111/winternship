@@ -4,6 +4,7 @@
 header_pages:  
   - Intro.md
   - case-studies.md
+  - Projects.md
   - Faq.md
   - Genie.md
 
@@ -31,4 +32,7 @@ collections:
   case_studies:
     output: true
     permalink: /case-studies/:slug/
+  projects:
+    output: true
+    permalink: /projects/:slug/
 

@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Genie📖
+title: Genie
 permalink: /genie/
 order: 3
 ---

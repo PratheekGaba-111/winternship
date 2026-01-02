@@ -1,0 +1,90 @@
+---
+layout: default
+---
+
+<article class="post">
+  {% comment %} Get all projects sorted by order {% endcomment %}
+  {% assign all_projects = site.projects | sort: "order" %}
+  {% assign current_index = nil %}
+
+  {% comment %} Find current page index {% endcomment %}
+  {% for item in all_projects %}
+    {% if item.url == page.url %}
+      {% assign current_index = forloop.index0 %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+
+  {% comment %} Display navigation if page found {% endcomment %}
+  {% if current_index != nil and all_projects.size > 1 %}
+    <nav style="display:flex; justify-content:space-between; align-items:center; gap:1rem; padding:1rem 0;">
+      <div style="flex:1; text-align:left;">
+        {% if current_index > 0 %}
+          {% assign prev_index = current_index | minus: 1 %}
+          {% assign prev = all_projects[prev_index] %}
+          <a href="{{ prev.url | relative_url }}" style="text-decoration:none; font-size:1.1em;">
+            ←
+          </a>
+        {% endif %}
+      </div>
+      <div style="flex:1; text-align:right;">
+        {% assign last_index = all_projects.size | minus: 1 %}
+        {% if current_index < last_index %}
+          {% assign next_index = current_index | plus: 1 %}
+          {% assign next = all_projects[next_index] %}
+          <a href="{{ next.url | relative_url }}" style="text-decoration:none; font-size:1.1em;">
+            →
+          </a>
+        {% endif %}
+      </div>
+    </nav>
+  {% endif %}
+
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title }}</h1>
+    {% if page.summary %}<p class="post-description">{{ page.summary }}</p>{% endif %}
+  </header>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+  <hr/>
+
+  {% comment %} Get all projects sorted by order {% endcomment %}
+  {% assign all_projects = site.projects | sort: "order" %}
+  {% assign current_index = nil %}
+
+  {% comment %} Find current page index {% endcomment %}
+  {% for item in all_projects %}
+    {% if item.url == page.url %}
+      {% assign current_index = forloop.index0 %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+
+  {% comment %} Display navigation if page found {% endcomment %}
+  {% if current_index != nil and all_projects.size > 1 %}
+    <nav style="display:flex; justify-content:space-between; align-items:center; gap:1rem; padding:1rem 0;">
+      <div style="flex:1; text-align:left;">
+        {% if current_index > 0 %}
+          {% assign prev_index = current_index | minus: 1 %}
+          {% assign prev = all_projects[prev_index] %}
+          <a href="{{ prev.url | relative_url }}" style="text-decoration:none; font-size:1.1em;">
+            ←
+          </a>
+        {% endif %}
+      </div>
+      <div style="flex:1; text-align:right;">
+        {% assign last_index = all_projects.size | minus: 1 %}
+        {% if current_index < last_index %}
+          {% assign next_index = current_index | plus: 1 %}
+          {% assign next = all_projects[next_index] %}
+          <a href="{{ next.url | relative_url }}" style="text-decoration:none; font-size:1.1em;">
+            →
+          </a>
+        {% endif %}
+      </div>
+    </nav>
+  {% endif %}
+</article>
